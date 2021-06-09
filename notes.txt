@@ -1,0 +1,45 @@
+OOP
+object oriented programming
+
+-it is a programming paradigm that is centered around
+objects rather than functions
+
+-it is NOT a programming language or tool
+
+-4 core concepts of OOP (pillars) (they are same in Python!!)
+    1. Encapsulation
+     -combine a group of related variables and functions into a 
+ unit (object)
+    -functions -> methods
+    -variables -> properties
+    -reduce complexity + increase reusability
+    2. Abstraction
+        -hiding some of the properties (like pressing play on vcr, you
+        -don't know what happens internally when you press play, it just
+        -plays, but there are functions that make it play)
+        -simpler interface
+        -reduces the impact of change
+
+        - reduce complexity and isolate impact of changes
+    3. Inheritance
+    -mechanism that allows you to eliminate the outside code:
+        -things like TextBox, Select, Checkbox
+            -all have properties (like hidden and innerHTML)
+            -all have methods (like click() and focus())
+        -insead of defining each of these objects, we can have
+        1 element that has properties and methods, and have 
+        each of the objects inherit the objects properties and methods.
+        -helps to eliminate redundant code
+
+    4. Polymorphism
+        -Poly = Many; Morph = Forms
+        -technique that allows to get rid of long if and else or
+        switch and case statements.
+        -the way each element is rendered,
+        you can define a render method that allows you to render()
+        the object in different ways depening on the object it is 
+        referencing. ex. element.render()
+        -recactor ugly switch/case statements
+
+
+
