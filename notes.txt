@@ -43,3 +43,25 @@ objects rather than functions
 
 
 
+objects
+
+
+-Prototypes
+
+-Portotypical Inheritance
+
+-ES6 Classes (ECMAScript 6/2015)
+    -ECMA is an organization that defines standards for technology
+    -JavaScript is a  programming language that confirms the ECMA 
+    script specifications
+
+    ES6 - Classes (not like in C# or Java, they are syntatic sugar over
+    prototypes and protypical inheritence)
+
+-Modules
+
+
+
+
+
+Object Literals
