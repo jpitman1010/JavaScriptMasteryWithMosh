@@ -61,7 +61,68 @@ objects
 -Modules
 
 
+//prototypical inheritance 
+//
+//(there are two types of inheritance: classical vs prototypical inheritance)
+    
+// inheritance allows an object to take on the properties and 
+    // methods of another object.
+
+//base/super/parent class is the class that the other objects 
+//will inhernet from
+//the relationship has an 'is a' relationship:
+// say parent/base/super object is a Shape
+// and another object we make is Circle.  Circle 'is a' shape.
+
+//the Shape object is the prototype(parent) of the Circle object
+
+
+//prototypical inheritance
+    //when accessing the property or method of an object
+    //JavaScript first looks at the object itself to see if
+    //it can find that property or method.  If it cannot find
+    //it within the object, it looks up the chain to find the
+    //prototype (parent) with the property or method all the way
+    //up to the root object.
+
+    //every object has a prototype or parent except the root object
 
 
 
-Object Literals
+//multilevel inheritance:
+let myArray = [];
+
+console.log(myArray);
+//look at the __proto__ of this myArray object in the web inspect
+//console, this is the prototype(parent) we can call it arrayBase 
+//for this example.
+//then scroll down and you will see another __proto__, if
+//you open that up, you will find another object.  
+//The objectBase(top level parent object)
+
+function Circle(radius) {
+    this.radius = radius;
+
+    this.draw = function() {
+        console.log('draw');
+    };
+}
+
+const circle = new Circle(10);
+
+//the Circle(radius) function is an object, and is the parent 
+//object or prototype, for all circles created in the future 
+//using the Circle constructor function (which is...again an
+//object).
+
+
+//objects created by a given constructor will have hte same 
+//prototype.
+
+//the constructor function will inherit from the JavaScript's 
+//parent object for all objects: objectBase.
+
+
+
+
+
