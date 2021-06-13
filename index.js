@@ -1,32 +1,23 @@
-//Exercise Prototypical Inheritance:
+// _________________________________________________________________________________
 
-//design 2 objects, HtmlElement and HtmlSelectElement
-// set a variable const e = new HtmlElement(); and you should see the following:
-//there is one method, click() under the HtmlElement
-//the HtmlElement's prototype has one method, focus()
-//just console.log statement for each method
-//when you type e.click you should get message in console "clicked"
-// "" e.focus() should get "focused"
+//Exercise: Polymorphism 
 
-//once you ahve this element working, create HtmlSelectElement
-//define another const s = new HtmlSelectElement(), and even if we do not pass any
-//arguments you will still get the items array which is initialized from an empty array,
-//and also have 2 methods, addItem and removeItem
-//you should then be able to use s.addItem('1'); s.addItem('2'); and then s.removeItem('2');
-//and when you inspect the object s, it should show under the items you now have only 
-//one item in the array, '1'
+    //use previous exercise and build off of it to use s and impliment a render method.
 
-//HtmlSelectElement inherits from the HtmlElement (prototype)
-//DO NOT use the extend function we created in lecture earlier,
-//INSTEAD manually set the prototype for HtmlSelectElement and 
-//set it to an instance of the HtmlElement (not the prototype, because
-//you will only get the click method because the focus method is set to the prototype 
-//of the HtmlElement, not the instance)
-
-function mixin(target, ...sources) {
-    Object.assign(target, ...sources);
-    
-}
+    //s.render() should return 
+    // " <select>
+    //  <option>1</option>
+    //  <option>2</option>
+    //  <option>3</option>
+    //</select> "
+    //
+    //then create an html image element that can be inherited from HtmlElement that
+    //that when (it can be clicked...)clicked it can be focused and then use a 
+    //it renders it's own image.
+    //src property of image element should be undefined, then you can set image src to
+    //some pic image https, etc... and then when you check by doing img.render() it should
+    //then have "<img src="https://..." />" as output (render a string, return it don't
+    //console.log it.)
 
 function HtmlElement() {
     this.click = function() {
@@ -44,46 +35,50 @@ function HtmlSelectElement(items = []){
 
     this.addItem = function(item) {
         this.items.push(item);
-    };
+    }
 
     this.removeItem = function(item) {
         this.items.pop(item);
         //can also do:
         //this.items.splic(this.items.indexOf(item),1);
     }
+    this.render = function() {
+        //the way I wrote this loop:    
+        // let options = `<select>` 
+        // for  (let ind = 0; ind < array.length; ind++) 
+        //     options += `<option> ${array[ind]} </option>`
+        // options += `</select>`
+        // if (array === [] ? undefined : options);
+        return (
+        //Mosh's loop:
+        `
+        <select>
+            ${this.items
+            .map(item => `<option>${item}</option>`)
+            .join('')}
+        </select>`);
+    }
 }
 
 
-const h = new HtmlElement();
-mixin( HtmlElement.prototype, focus );
-
-console.log(h);
-
-h.focus();
-h.click();
-
-
- 
-// HtmlSelectElement.prototype =Object.create(HtmlElement.prototype);
-// //this won't work for this implimentation, it causes the baseHtml element that has an
-// //object of only 1 element, focus.  The prototype of the baseHtml (parent) we only get
-// //access to the focus.
 HtmlSelectElement.prototype = new HtmlElement();
-//must do it this way because we need the click object.  Now need to set constructor
-//to create the new HtmlSelector element (best to not do it with new HtmlSelectElement):
 HtmlSelectElement.prototype.constructor = HtmlSelectElement;
+function HtmlImageElement(src) {
+    this.src = src;
 
-const s = new HtmlSelectElement()
+    this.render =  function() {
+        return `<img src=${this.src} />`;
+    }
+}
+
+HtmlImageElement.prototype = new HtmlElement();
+HtmlImageElement.prototype.constructor = HtmlImageElement;
+
+const elements = [
+    new HtmlSelectElement([1, 2, 3]),
+    new HtmlImageElement('https://picsum.photos/200')
+];
 
 
-console.log(s);
-
-s.addItem('1');
-s.addItem('2');
-
-
-console.log(s);
-
-s.removeItem('2');
-
-console.log(s);
+for (let element of elements)
+    console.log(element.render());
