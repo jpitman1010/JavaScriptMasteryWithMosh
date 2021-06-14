@@ -123,6 +123,9 @@ const circle = new Circle(10);
 //parent object for all objects: objectBase.
 
 
+Babeljs.io is a website that allows you to enter in JS code and it takes it back to ES5 code that all browsers
+understand.  Can us this to see differences between ES6 syntax and ES5.
+
 
 
 
